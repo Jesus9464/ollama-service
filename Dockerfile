@@ -1,6 +1,9 @@
 # Usa la imagen base de Ollama
 FROM ollama/ollama:latest
 
+# Instalar curl
+RUN apt-get update && apt-get install -y curl && rm -rf /var/lib/apt/lists/*
+
 # Define la variable de entorno para que Ollama escuche en todas las interfaces
 ENV OLLAMA_HOST=0.0.0.0:11434
 
