@@ -8,8 +8,9 @@ ENV OLLAMA_HOST=0.0.0.0:11434
 EXPOSE 11434
 
 # Copia el script para descargar el modelo mistral
-COPY start.sh /usr/local/bin/
+COPY start.sh /usr/local/bin/start.sh
 RUN chmod +x /usr/local/bin/start.sh
 
-# Ejecuta el script que descarga el modelo y luego inicia el servidor
+# Sobrescribir el ENTRYPOINT original de ollama
+ENTRYPOINT []
 CMD ["/usr/local/bin/start.sh"]

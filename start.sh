@@ -5,7 +5,8 @@ ollama serve &
 
 # Esperar a que el servicio de Ollama esté disponible
 echo "Esperando a que Ollama esté listo..."
-while ! curl -s http://localhost:11434 > /dev/null; do
+until curl -s http://localhost:11434/api/version > /dev/null; do
+    echo "Esperando..."
     sleep 2
 done
 
