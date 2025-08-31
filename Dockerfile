@@ -11,6 +11,5 @@ EXPOSE 11434
 COPY start.sh /usr/local/bin/
 RUN chmod +x /usr/local/bin/start.sh
 
-# Usa el ENTRYPOINT predeterminado de la imagen base (/bin/ollama)
-# Y especifica el comando 'serve' como argumento
-CMD ["serve"]
+# Ejecuta el script que descarga el modelo y luego inicia el servidor
+CMD ["/usr/local/bin/start.sh"]
