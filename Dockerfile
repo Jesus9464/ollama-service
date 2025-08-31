@@ -8,10 +8,10 @@ ENV OLLAMA_HOST=0.0.0.0
 EXPOSE 11434
 
 # Copia el script de inicio al contenedor
-COPY start.sh /start.sh
+COPY start.sh /usr/local/bin/start.sh
 
 # Asegura que el script sea ejecutable
-RUN chmod +x /start.sh
+RUN chmod +x /usr/local/bin/start.sh
 
 # Ejecuta el script de inicio
-CMD ["/start.sh"]
+CMD ["/bin/sh", "-c", "ollama serve & sleep 5 && ollama pull mistral && wait"]
