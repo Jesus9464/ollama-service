@@ -1,14 +1,11 @@
 # Usa la imagen base de Ollama
 FROM ollama/ollama:latest
 
-# Copia el script de inicio al contenedor
-COPY start.sh /start.sh
+# Define la variable de entorno para que Ollama escuche en todas las interfaces
+ENV OLLAMA_HOST=0.0.0.0
 
-# Haz que el script sea ejecutable
-RUN chmod +x /start.sh
-
-# Expone el puerto por defecto de Ollama
+# Exponer el puerto por defecto de Ollama
 EXPOSE 11434
 
-# Ejecuta el script de inicio al iniciar el contenedor
-CMD ["/start.sh"]
+# Ejecuta Ollama y descarga el modelo mistral al iniciar el contenedor
+CMD sh -c "ollama serve & sleep 5 && ollama pull mistral && wait"
